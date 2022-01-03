@@ -1,9 +1,8 @@
+import { Router } from "./routes/Routes";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Pokedex 7</h1>
-    </div>
+    <Router />
   );
 }
 
