@@ -1,3 +1,4 @@
+
 import React from "react";
 import PaginaDetalhes from "./paginas/PaginaDetalhes/PaginaDetalhes";
 import PaginaHome from "./paginas/PaginaHome/PaginaHome";
@@ -8,6 +9,13 @@ function App() {
       {/* <PaginaHome/> */}
       <PaginaDetalhes/>
     </div>
+
+import { Router } from "./routes/Routes";
+
+function App() {
+  return (
+    <Router />
+
   );
 }
 
