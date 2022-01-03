@@ -1,8 +1,12 @@
+import React from "react";
+import PaginaDetalhes from "./paginas/PaginaDetalhes/PaginaDetalhes";
+import PaginaHome from "./paginas/PaginaHome/PaginaHome";
 
 function App() {
   return (
     <div className="App">
-      <h1>Pokedex 7</h1>
+      {/* <PaginaHome/> */}
+      <PaginaDetalhes/>
     </div>
   );
 }
