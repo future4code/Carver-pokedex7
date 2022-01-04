@@ -1,31 +1,92 @@
-import React from "react";
-import styled from "styled-components";
-import { HeaderDetalhes, ContainerDetalhes, CartaoPoderes, CartaoAtaques } from "./styled";
+import React, { useEffect, useState } from "react";
+import { fetchPokemon } from "../../request/request";
+import {
+  Container,
+  HeaderContainer,
+  Content,
+  HeaderButton,
+  HeaderTitle,
+  FirstContainer,
+  SecondContainer,
+  ThirdContainer,
+  ImageContainer,
+  TypeContainer,
+  MovesContainer,
+  LeftStatusText,
+} from "./styled";
 
-const PaginaDetalhes = () => {
-  return (
-    <div>
-      <HeaderDetalhes>
-        <button>
-          Voltar
-        </button>
-        <button>
-          Ir para Pokedex
-        </button>
-      </HeaderDetalhes>
-      <ContainerDetalhes>
-        <div>
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" width="200" />
-        </div>
-        <CartaoPoderes>
-          poderes
-        </CartaoPoderes>
-        <CartaoAtaques>
-          ataques
-        </CartaoAtaques>
-      </ContainerDetalhes>
-    </div>
-  )
+const PaginaDetalhes = ({ match }) => {
+
+  const [pokemon, setPokemon] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPokemon(match.params.id).then((response) => {
+      setPokemon(response)
+      setLoading(false);
+    })
+  }, [match.params.id])
+
+  if (loading) {
+    return <h1>Carregando...</h1>
+  } else
+
+    return (
+      <Container>
+        <HeaderContainer>
+          <HeaderButton>
+            Voltar
+          </HeaderButton>
+          <HeaderTitle>
+            {pokemon.name.toUpperCase()}
+          </HeaderTitle>
+          <HeaderButton>
+            Ir para Pokedex
+          </HeaderButton>
+        </HeaderContainer>
+        <Content>
+          <FirstContainer>
+            <ImageContainer>
+              <div>
+                <img alt="" src={pokemon.sprites.back_default} width="200" />
+              </div>
+            </ImageContainer>
+            <ImageContainer>
+              <div>
+                <img alt="" src={pokemon.sprites.front_default} width="200" />
+              </div>
+            </ImageContainer>
+          </FirstContainer>
+
+          <SecondContainer>
+            <p>Stats</p>
+            <LeftStatusText>HP: {pokemon.stats[0].base_stat}</LeftStatusText>
+            <LeftStatusText>attack: {pokemon.stats[1].base_stat}</LeftStatusText>
+            <LeftStatusText>defense: {pokemon.stats[2].base_stat}</LeftStatusText>
+            <LeftStatusText>special-attack: {pokemon.stats[3].base_stat}</LeftStatusText>
+            <LeftStatusText>special-defense: {pokemon.stats[4].base_stat}</LeftStatusText>
+            <LeftStatusText>speed: {pokemon.stats[5].base_stat}</LeftStatusText>
+          </SecondContainer>
+
+          <ThirdContainer>
+            <TypeContainer>
+              {pokemon.types.map((type) => <p key={type.type.name}>{type.type.name.toUpperCase()}</p>)}
+            </TypeContainer>
+
+            <MovesContainer>
+              <p>Moves</p>
+              <div>
+              {pokemon.moves.map((move, index) => {
+                if (index === 0) return <span key={move.move.name}>{move.move.name}</span>
+                return <span key={move.move.name}> ; {move.move.name}</span>
+              })}
+              </div>
+            </MovesContainer>
+          </ThirdContainer>
+
+        </Content>
+      </Container>
+    )
 }
 
 export default PaginaDetalhes
