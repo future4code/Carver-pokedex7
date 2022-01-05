@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { fetchPokemon } from "../../request/request";
+import { goToHome, goToPokedex } from "../../routes/coordinatis";
 import {
   Container,
   HeaderContainer,
   Content,
   HeaderButton,
+  PokedexButton,
   HeaderTitle,
   FirstContainer,
   SecondContainer,
@@ -19,6 +22,7 @@ const PaginaDetalhes = ({ match }) => {
 
   const [pokemon, setPokemon] = useState(undefined);
   const [loading, setLoading] = useState(true);
+  const history= useHistory()
 
   useEffect(() => {
     fetchPokemon(match.params.id).then((response) => {
@@ -34,15 +38,6 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton>
-            Voltar
-          </HeaderButton>
-          <HeaderTitle>
-            {pokemon.name.toUpperCase()}
-          </HeaderTitle>
-          <HeaderButton>
-            Ir para Pokedex
-          </HeaderButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
