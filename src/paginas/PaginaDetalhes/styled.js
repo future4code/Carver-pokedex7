@@ -19,6 +19,7 @@ export const HeaderContainer = styled.header`
 
 export const HeaderButton = styled.button`
     padding: 10px;
+    border: 1px, black;
 `
 
 export const PokedexButton= styled.button`
