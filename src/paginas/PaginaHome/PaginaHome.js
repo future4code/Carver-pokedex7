@@ -1,48 +1,57 @@
-import React, { useState } from "react";
-import useRequestData from "../../hooks/useRequestData";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../url/url";
-import { Header, BotaoHome, TextoHeader, CartaoPokemon, ContainerHome } from "./styled";
+import { Header, CartaoPokemon, ContainerHome } from "./styled";
 
 
 const PaginaHome = () => {
 
-  const [pokemon, isLoading] = useRequestData({}, `${BASE_URL}/pokemon?limit=30&offset=200`)
-  const [url, setUrl] = useState([])
- 
-  const lista = pokemon.results
+  const [pokemon, setPokemon] = useState([])
+  const [pokeUrl, setPokeUrl] = useState([])
+  const [imagem, setImagem] = useState([])
 
-  let novaLista = []
+  // pegar os pokemons na api e setar o nome e a url nos estados
+  useEffect(() => {
+    axios.get(`${BASE_URL}/pokemon`)
+      .then((res) => {
+        // setPokemon(res.data.results)
+        // console.log(res, "primeira resposta")
+        setPokemon(res.data.results.map(poke => poke.name))
+        setPokeUrl(res.data.results.map(poke => poke.url))
+      })
+  }, [])
 
-  lista && lista.forEach(e => {
-    novaLista.push(e.name)
-  });
+  //tentativa de transformar o objeto url em template
+  const indexUrl = pokeUrl.toString().split('/')[pokeUrl.toString().split('/').length - 2]
+  const imagemUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/20.png`
 
-  console.log(novaLista, "isso é nova lista")
+  // console.log(typeof pokeUrl)
+  // console.log(indexUrl, "index")
+  // console.log(imagemUrl, "imagem")
 
-  const mapNovaLista = novaLista.map((nome) =>{
-    return(
-      <div>
-        {nome}
-      </div>
+  //map das urls
+
+  const indexMap = pokeUrl.map((url) => {
+    return (
+      <CartaoPokemon>
+        {url}
+      </CartaoPokemon>
     )
   })
 
-  console.log(pokemon, "isso é pokemon")
+  //loop com a url das imagens, mas não consigo exportar a informação pra usar depois
 
-  // const mapPoke = pokemon.map((poke) =>{
-  //   return(
-  //     <div>
-
-  //     </div>
-  //   )
-  // })
-
-
-
+  pokemon.map(element => {
+    const nomes = element
+    axios.get(`${BASE_URL}/pokemon/${nomes}`)
+      .then((res) => {
+        console.log(res.data.sprites.front_default, "o que eu quero")
+        // setImagem(res.data.sprites.front_default)
+      })
+  })
 
   return (
     <div>
-      {mapNovaLista}
       <Header>
         <button>
           Ver minha POKEDEX
@@ -51,63 +60,9 @@ const PaginaHome = () => {
           LISTA DE POKEMONS
         </p>
       </Header>
+      <img src={imagemUrl} />
+      {indexMap}
       <ContainerHome>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
-        <CartaoPokemon>
-          <button>
-            Adicionar a Pokedéx
-          </button>
-          <button>
-            Ver detalhes
-          </button>
-        </CartaoPokemon>
         <CartaoPokemon>
           <button>
             Adicionar a Pokedéx
