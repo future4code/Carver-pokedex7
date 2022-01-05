@@ -24,6 +24,7 @@ export const HeaderButton = styled.button`
 
 export const PokedexButton= styled.button`
     padding: :10px;
+    border: 1px, black;
 `
 
 export const HeaderTitle = styled.p`
