@@ -1,11 +1,16 @@
 import React from "react";
 import { Header, BotaoHome, TextoHeader, CartaoPokemon, ContainerHome } from "./styled";
+import { useHistory } from "react-router-dom";
+import { goToPokedex } from "../../routes/coordinatis";
 
 const PaginaHome = () => {
+
+  const history = useHistory()
+
   return (
     <div>
       <Header>
-        <button>
+        <button onClick ={()=> goToPokedex(history)}>
           Ver minha POKEDEX
         </button>
         <p>
