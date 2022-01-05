@@ -38,15 +38,6 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton onClick={()=>goToHome(history)}>
-            Voltar
-          </HeaderButton>
-          <HeaderTitle>
-            {pokemon.name.toUpperCase()}
-          </HeaderTitle>
-          <PokedexButton onClick={()=>goToPokedex(history)}>
-            Ir para Pokedex
-          </PokedexButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
