@@ -3,14 +3,15 @@ import { goToDetails } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import { Card } from "./styled";
 
-const CardPokemon = () => {
+const CardPokemon = (props) => {
+    console.log(props)
     const history = useHistory()
     return (
         <Card>
-            <img alt={"pokemon"} src={"https://assets.pokemon.com/assets/cms2/img/misc/countries/pt/country_detail_pokemon.png"} />
+            <img alt={"pokemon"} src={props.imagem}/>
             <div>
-                <button>Remover</button>
-                <button onClick={() => goToDetails(history)}>Ver Detalhes</button>
+                <button onClick={props.remover}>Remover</button>
+                <button onClick={() => goToDetails(history, props.id)}>Ver Detalhes</button>
             </div>
 
         </Card>

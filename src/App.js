@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Router } from "./routes/Routes";
 import { ContextState } from "./context";
+import GlobalState from "./contexts/GlobalContext/GlobalState";
 
 function App() {
-  const [carrinho, setCarrinho] = useState([])
-
+  
   return (
-    <ContextState.Provider value={[carrinho, setCarrinho]}>
+    
+    <GlobalState>
       <Router />
-    </ContextState.Provider >
+    </GlobalState>
 
 
   );

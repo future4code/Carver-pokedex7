@@ -24,3 +24,5 @@ export async function fetchPokemon(pokemonId) {
     const { data } = await axios.get(`${BASE_URL}pokemon/${pokemonId}`);
     return data;
 }
+
+ 
