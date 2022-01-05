@@ -23,7 +23,9 @@ justify-content: space-evenly;
 
 export const CartaoPokemon = styled.div`
 display: flex;
-align-items: flex-end;
+flex-direction: column;
+align-items: center;
+justify-content: flex-end;
 border: 2px solid grey;
 height: 250px;
 width: 180px;
