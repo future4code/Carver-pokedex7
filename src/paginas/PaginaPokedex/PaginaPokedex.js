@@ -2,24 +2,20 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { goToHome } from '../../routes/coordinatis';
 import { Header, Container, Card } from './styled';
- import CardPokemon from '../../componentes/CardPokedex/CardPokemon';
-import { ContextState } from '../../context';
 import { goToDetails } from '../../routes/coordinatis';
+import { GlobalContext } from '../../contexts/GlobalContext/GlobalStateContext';
 
 export function Pokedex() {
     const history = useHistory()
-    const [carriinho, setCarrinho] = useContext(ContextState)
+    const [carriinho, setCarrinho] = useContext(GlobalContext)
     console.log(carriinho)
-    console.log("item", carriinho[0].id)
+   
 
     
      const removerPokemon = (pokeId) =>{
         let remove = carriinho.filter((poke)=>{
-            return pokeId !== poke.id
-            
+            return pokeId !== poke.id         
         })
-        
-        // console.log("clicou", pokeId)
         setCarrinho (remove)
      }
      
@@ -30,15 +26,10 @@ export function Pokedex() {
            <p> <img alt="pokemon" src={poke.foto} /></p>
            <div>
                 <button onClick={() => removerPokemon(poke.id)}>Remover</button>
-                <button onClick={() => goToDetails(history)}>Ver Detalhes</button>
+                <button onClick={() => goToDetails(history, poke.id)}>Ver Detalhes</button>
             </div>
         </Card>
-            // <CardPokemon
-            // imagem={poke.foto}
-            // id={poke.id}
-            // remover={removerPokemon}
-            // />
-            
+                       
         )
     })
     console.log("map", mapPokemons)
