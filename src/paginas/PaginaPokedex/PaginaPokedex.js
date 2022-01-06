@@ -50,7 +50,7 @@ export function Pokedex() {
 
 
     console.log("map", mapPokemons)
-    console.log("estado", estado)
+    console.log("estadooooooooooooo", estado)
 
     return (
         <div>
