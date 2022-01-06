@@ -38,6 +38,24 @@ const PaginaHome = () => {
     }
   }
 
+    /*unclickable pokedex button 
+    const [inCart, setInCart]= useState(false)
+
+    verifyItemOnCart = () => {
+      carrinho.forEach((pokemons) => {
+          if (pokemons.id === pokemon.id) {
+            setInCart (true)
+          }
+      })
+  };
+
+
+  useEffect ((prevState)=>{
+    if (carrinho !== prevState.carrinho){
+      verifyItemOnCart()
+    }
+  },[])*/
+
   // mapeamento das imagens dos pokemons na tela principal
   const mapPokeImg = pokeUrl.map(e => {
     //mostrar a posição onde a string pokemon/ se encontra na url
@@ -63,7 +81,7 @@ const PaginaHome = () => {
   return (
     <div>
       <Header>
-        <button onClick={() => goToPokedex(history)}>
+        <button onClick={()=>goToPokedex(history)}>
           Ver minha POKEDEX
         </button>
         <p>
@@ -78,4 +96,3 @@ const PaginaHome = () => {
 }
 
 export default PaginaHome
-
