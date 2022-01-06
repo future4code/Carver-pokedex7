@@ -4,16 +4,14 @@ import { useHistory } from "react-router-dom";
 import { Card } from "./styled";
 
 const CardPokemon = (props) => {
-    console.log(props)
     const history = useHistory()
     return (
         <Card>
-            <img alt={"pokemon"} src={props.imagem}/>
+            <img alt={"pokemon"} src={props.imagem} />
             <div>
                 <button onClick={props.remover}>Remover</button>
                 <button onClick={() => goToDetails(history, props.id)}>Ver Detalhes</button>
             </div>
-
         </Card>
     )
 }
