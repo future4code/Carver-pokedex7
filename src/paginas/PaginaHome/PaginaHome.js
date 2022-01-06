@@ -1,12 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext/GlobalStateContext";
 import { BASE_URL } from "../../url/url";
 import { Header, CartaoPokemon, ContainerHome } from "./styled";
+import { goToDetails } from "../../routes/coordinatis";
+import { useHistory } from "react-router-dom";
 
 const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
+  const [carrinho, setCarrinho] = useContext(GlobalContext)
+  const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
   useEffect(() => {
@@ -17,6 +22,14 @@ const PaginaHome = () => {
       })
   }, [])
 
+
+
+  const addCarrinho = (pokeId) => {
+    let novoCarro = [...carrinho]
+		let pokeSelecionado = [...novoCarro, pokeId]
+		setCarrinho( pokeSelecionado)
+	
+	  }
 
   // mapeamento das imagens dos pokemons na tela principal
   const mapPokeImg = pokeUrl.map(e => {
@@ -33,13 +46,14 @@ const PaginaHome = () => {
       <CartaoPokemon key={indexPokemon}>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
         <div>
-          <button onClick={() => console.log(indexPokemon)}>carrinho</button>
-          <button onClick={() => console.log(indexPokemon)}>ver detalhes</button>
+          <button onClick={() => addCarrinho(indexPokemon)}>carrinho</button>
+          <button onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</button>
         </div>
       </CartaoPokemon>
     )
   })
 
+console.log(carrinho)
   return (
     <div>
       <Header>
