@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { goToHome, goToPokedex } from '../../routes/coordinatis';
 import { fetchPokemon } from "../../request/request";
 import { goToPokedex, goToHome } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
@@ -15,6 +17,7 @@ import {
   TypeContainer,
   MovesContainer,
   LeftStatusText,
+  PokedexButton,
 } from "./styled";
 
 const PaginaDetalhes = ({ match }) => {
@@ -45,7 +48,7 @@ const PaginaDetalhes = ({ match }) => {
           </HeaderTitle>
           <HeaderButton onClick={() => goToPokedex(history)}>
             Ir para Pokedex
-          </HeaderButton>
+          </PokedexButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
