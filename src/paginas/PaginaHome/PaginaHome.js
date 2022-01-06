@@ -10,7 +10,7 @@ const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
-  const [carrinho, setCarrinho] = useContext(GlobalContext)
+  const [pokedex, setPokedex] = useContext(GlobalContext)
   const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
@@ -22,19 +22,19 @@ const PaginaHome = () => {
       })
   }, [])
 
-  const addCarrinho = (pokeId) => {
+  const addPokedex = (pokeId) => {
     let verificaExistencia;
-    for (let i = 0; i < carrinho.length; i++) {
-      if (carrinho[i] === pokeId) {
+    for (let i = 0; i < pokedex.length; i++) {
+      if (pokedex[i] === pokeId) {
         verificaExistencia = true;
       }
     }
     if (verificaExistencia) { alert("Esse pokemon já está na pokedex.") }
     else {
-      let novoCarro = [...carrinho]
-      let pokeSelecionado = [...novoCarro, pokeId]
+      let novaPokedex = [...pokedex]
+      let pokeSelecionado = [...novaPokedex, pokeId]
 
-      setCarrinho(pokeSelecionado)
+      setPokedex(pokeSelecionado)
     }
   }
 
@@ -53,7 +53,7 @@ const PaginaHome = () => {
       <CartaoPokemon key={indexPokemon}>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
         <div>
-          <button onClick={() => addCarrinho(indexPokemon)}>carrinho</button>
+          <button onClick={() => addPokedex(indexPokemon)}>Adicionar</button>
           <button onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</button>
         </div>
       </CartaoPokemon>

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { GlobalContext } from "./GlobalStateContext";
 
 export default function GlobalState(props) {
-    const [carrinho, setCarrinho] = useState([])
+    const [pokedex, setPokedex] = useState([])
 
     return (
-        <GlobalContext.Provider value={[carrinho, setCarrinho]}>
+        <GlobalContext.Provider value={[pokedex, setPokedex]}>
             {props.children}
         </GlobalContext.Provider>
     )

@@ -7,16 +7,16 @@ import { GlobalContext } from '../../contexts/GlobalContext/GlobalStateContext';
 
 export function Pokedex() {
     const history = useHistory()
-    const [carrinho, setCarrinho] = useContext(GlobalContext)
+    const [pokedex, setPokedex] = useContext(GlobalContext)
 
     const removerPokemon = (pokeId) => {
-        let remove = carrinho.filter((poke) => {
+        let remove = pokedex.filter((poke) => {
             return pokeId !== poke
         })
-        setCarrinho(remove)
+        setPokedex(remove)
     }
 
-    const mapPokemons = carrinho.map((poke, index) => {
+    const mapPokemons = pokedex.map((poke, index) => {
         return (
             <Card key={index}>
                 <p>
