@@ -7,33 +7,28 @@ import { GlobalContext } from '../../contexts/GlobalContext/GlobalStateContext';
 
 export function Pokedex() {
     const history = useHistory()
-    const [carrinho, setCarrinho] = useContext(GlobalContext)
-    console.log(carrinho)
-   
+    const [pokedex, setPokedex] = useContext(GlobalContext)
 
-    
-     const removerPokemon = (pokeId) =>{
-        let remove = carrinho.filter((poke)=>{
-            return pokeId !== poke.id         
+    const removerPokemon = (pokeId) => {
+        let remove = pokedex.filter((poke) => {
+            return pokeId !== poke
         })
-        setCarrinho (remove)
-     }
-     
+        setPokedex(remove)
+    }
 
-    const mapPokemons = carrinho.map((poke) => {
-        return(
-            <Card key={poke.id}>
-           <p> <img alt="pokemon" src={poke.foto} /></p>
-           <div>
-                <button onClick={() => removerPokemon(poke.id)}>Remover</button>
-                <button onClick={() => goToDetails(history, poke.id)}>Ver Detalhes</button>
-            </div>
-        </Card>
-                       
+    const mapPokemons = pokedex.map((poke, index) => {
+        return (
+            <Card key={index}>
+                <p>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke}.png`} />
+                </p>
+                <div>
+                    <button onClick={() => removerPokemon(poke)}>Remover</button>
+                    <button onClick={() => goToDetails(history, poke)}>Ver Detalhes</button>
+                </div>
+            </Card>
         )
     })
-    console.log("map", mapPokemons)
-
 
     return (
         <div>
@@ -42,11 +37,8 @@ export function Pokedex() {
                 <h1>Pokedex</h1>
             </Header >
             <Container>
-                
                 {mapPokemons}
-             
             </Container>
-
         </div>
     )
 }

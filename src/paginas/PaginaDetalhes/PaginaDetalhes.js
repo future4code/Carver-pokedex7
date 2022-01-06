@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { goToHome, goToPokedex } from '../../routes/coordinatis';
 import { fetchPokemon } from "../../request/request";
+import { goToPokedex, goToHome } from "../../routes/coordinatis";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   HeaderContainer,
@@ -15,14 +15,13 @@ import {
   TypeContainer,
   MovesContainer,
   LeftStatusText,
-  PokedexButton,
 } from "./styled";
 
 const PaginaDetalhes = ({ match }) => {
 
   const [pokemon, setPokemon] = useState(undefined);
   const [loading, setLoading] = useState(true);
-  const history= useHistory()
+  const history = useHistory()
 
   useEffect(() => {
     fetchPokemon(match.params.id).then((response) => {
@@ -38,15 +37,15 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton onClick={()=>goToHome(history)}>
+          <HeaderButton onClick={() => goToHome(history)}>
             Voltar
           </HeaderButton>
           <HeaderTitle>
             {pokemon.name.toUpperCase()}
           </HeaderTitle>
-          <PokedexButton onClick={()=>goToPokedex(history)}>
+          <HeaderButton onClick={() => goToPokedex(history)}>
             Ir para Pokedex
-          </PokedexButton>
+          </HeaderButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
@@ -80,10 +79,10 @@ const PaginaDetalhes = ({ match }) => {
             <MovesContainer>
               <p>Moves</p>
               <div>
-              {pokemon.moves.map((move, index) => {
-                if (index === 0) return <span key={move.move.name}>{move.move.name}</span>
-                return <span key={move.move.name}> ; {move.move.name}</span>
-              })}
+                {pokemon.moves.map((move, index) => {
+                  if (index === 0) return <span key={move.move.name}>{move.move.name}</span>
+                  return <span key={move.move.name}> ; {move.move.name}</span>
+                })}
               </div>
             </MovesContainer>
           </ThirdContainer>

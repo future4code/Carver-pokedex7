@@ -1,35 +1,42 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalStateContext";
-import { BASE_URL } from "../../url/url";
 import { Header, CartaoPokemon, ContainerHome } from "./styled";
 import { goToDetails, goToPokedex } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
+import { BASE_URL } from "../../componentes/url/url";
 
 const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
-  const [carrinho, setCarrinho] = useContext(GlobalContext)
+  const [pokedex, setPokedex] = useContext(GlobalContext)
   const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
   useEffect(() => {
-    axios.get(`${BASE_URL}/pokemon`)
+    axios.get(`${BASE_URL}pokemon`)
       .then((res) => {
         setPokemon(res.data.results.map(poke => poke.name))
         setPokeUrl(res.data.results.map(poke => poke.url))
       })
   }, [])
 
+  const addPokedex = (pokeId) => {
+    let verificaExistencia;
+    for (let i = 0; i < pokedex.length; i++) {
+      if (pokedex[i] === pokeId) {
+        verificaExistencia = true;
+      }
+    }
+    if (verificaExistencia) { alert("Esse pokemon já está na pokedex.") }
+    else {
+      let novaPokedex = [...pokedex]
+      let pokeSelecionado = [...novaPokedex, pokeId]
 
-
-  const addCarrinho = (pokeId) => {
-    let novoCarro = [...carrinho]
-		let pokeSelecionado = [...novoCarro, pokeId]
-		setCarrinho( pokeSelecionado)
-	
-	  }
+      setPokedex(pokeSelecionado)
+    }
+  }
 
     /*unclickable pokedex button 
     const [inCart, setInCart]= useState(false)
@@ -64,18 +71,17 @@ const PaginaHome = () => {
       <CartaoPokemon key={indexPokemon}>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
         <div>
-          <button onClick={() => addCarrinho(indexPokemon)}>carrinho</button>
+          <button onClick={() => addPokedex(indexPokemon)}>Adicionar</button>
           <button onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</button>
         </div>
       </CartaoPokemon>
     )
   })
 
-console.log(carrinho)
   return (
     <div>
       <Header>
-        <button onClick={()=>goToPokedex(history)}> 
+        <button onClick={()=>goToPokedex(history)}>
           Ver minha POKEDEX
         </button>
         <p>
@@ -90,4 +96,3 @@ console.log(carrinho)
 }
 
 export default PaginaHome
-
