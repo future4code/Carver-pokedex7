@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { goToHome, goToPokedex } from '../../routes/coordinatis';
 import { fetchPokemon } from "../../request/request";
-import { goToHome, goToPokedex } from "../../routes/coordinatis";
 import {
   Container,
   HeaderContainer,
   Content,
   HeaderButton,
-  PokedexButton,
   HeaderTitle,
   FirstContainer,
   SecondContainer,
@@ -16,6 +15,7 @@ import {
   TypeContainer,
   MovesContainer,
   LeftStatusText,
+  PokedexButton,
 } from "./styled";
 
 const PaginaDetalhes = ({ match }) => {
@@ -38,6 +38,15 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
+          <HeaderButton onClick={()=>goToHome(history)}>
+            Voltar
+          </HeaderButton>
+          <HeaderTitle>
+            {pokemon.name.toUpperCase()}
+          </HeaderTitle>
+          <PokedexButton onClick={()=>goToPokedex(history)}>
+            Ir para Pokedex
+          </PokedexButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
