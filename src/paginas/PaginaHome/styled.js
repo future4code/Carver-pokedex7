@@ -8,7 +8,6 @@ max-Width: 100vw;
 height: 10vh;
 align-items: center;
 justify-content: space-evenly;
-
 `
 
 export const ContainerHome = styled.div`

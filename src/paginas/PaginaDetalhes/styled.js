@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex: 1;
     height: 100vh;
-    flex-direction: column
+    flex-direction: column;
 `
 
 export const HeaderContainer = styled.header`
