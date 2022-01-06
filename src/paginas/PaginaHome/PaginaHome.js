@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalStateContext";
 import { BASE_URL } from "../../url/url";
 import { Header, CartaoPokemon, ContainerHome } from "./styled";
-import { goToDetails } from "../../routes/coordinatis";
+import { goToDetails, goToPokedex } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 
 const PaginaHome = () => {
@@ -31,6 +31,24 @@ const PaginaHome = () => {
 	
 	  }
 
+    /*unclickable pokedex button 
+    const [inCart, setInCart]= useState(false)
+
+    verifyItemOnCart = () => {
+      carrinho.forEach((pokemons) => {
+          if (pokemons.id === pokemon.id) {
+            setInCart (true)
+          }
+      })
+  };
+
+
+  useEffect ((prevState)=>{
+    if (carrinho !== prevState.carrinho){
+      verifyItemOnCart()
+    }
+  },[])*/
+
   // mapeamento das imagens dos pokemons na tela principal
   const mapPokeImg = pokeUrl.map(e => {
     //mostrar a posição onde a string pokemon/ se encontra na url
@@ -57,7 +75,7 @@ console.log(carrinho)
   return (
     <div>
       <Header>
-        <button>
+        <button onClick={()=>goToPokedex(history)}> 
           Ver minha POKEDEX
         </button>
         <p>
