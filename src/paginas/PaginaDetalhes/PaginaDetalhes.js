@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchPokemon } from "../../request/request";
+import { goToPokedex, goToHome } from "../../routes/coordinatis";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   HeaderContainer,
@@ -19,6 +21,7 @@ const PaginaDetalhes = ({ match }) => {
 
   const [pokemon, setPokemon] = useState(undefined);
   const [loading, setLoading] = useState(true);
+  const history = useHistory()
 
   useEffect(() => {
     fetchPokemon(match.params.id).then((response) => {
@@ -34,13 +37,13 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton>
+          <HeaderButton onClick={() => goToHome(history)}>
             Voltar
           </HeaderButton>
           <HeaderTitle>
             {pokemon.name.toUpperCase()}
           </HeaderTitle>
-          <HeaderButton>
+          <HeaderButton onClick={() => goToPokedex(history)}>
             Ir para Pokedex
           </HeaderButton>
         </HeaderContainer>
@@ -76,10 +79,10 @@ const PaginaDetalhes = ({ match }) => {
             <MovesContainer>
               <p>Moves</p>
               <div>
-              {pokemon.moves.map((move, index) => {
-                if (index === 0) return <span key={move.move.name}>{move.move.name}</span>
-                return <span key={move.move.name}> ; {move.move.name}</span>
-              })}
+                {pokemon.moves.map((move, index) => {
+                  if (index === 0) return <span key={move.move.name}>{move.move.name}</span>
+                  return <span key={move.move.name}> ; {move.move.name}</span>
+                })}
               </div>
             </MovesContainer>
           </ThirdContainer>
