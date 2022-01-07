@@ -5,12 +5,14 @@ import { Header, CartaoPokemon, ContainerHome } from "./styled";
 import { goToDetails, goToPokedex } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../../componentes/url/url";
+import { findAllInRenderedTree } from "react-dom/test-utils";
 
 const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
   const [pokedex, setPokedex] = useContext(GlobalContext)
+  const [disable, setDisable]=useState(false)
   const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
@@ -23,38 +25,10 @@ const PaginaHome = () => {
   }, [])
 
   const addPokedex = (pokeId) => {
-    let verificaExistencia;
-    for (let i = 0; i < pokedex.length; i++) {
-      if (pokedex[i] === pokeId) {
-        verificaExistencia = true;
-      }
-    }
-    if (verificaExistencia) { alert("Esse pokemon já está na pokedex.") }
-    else {
-      let novaPokedex = [...pokedex]
-      let pokeSelecionado = [...novaPokedex, pokeId]
-
-      setPokedex(pokeSelecionado)
-    }
-  }
-
-    /*unclickable pokedex button 
-    const [inCart, setInCart]= useState(false)
-
-    verifyItemOnCart = () => {
-      carrinho.forEach((pokemons) => {
-          if (pokemons.id === pokemon.id) {
-            setInCart (true)
-          }
-      })
+    alert ('Pokemon adicionado com sucesso!')
+    setPokedex([...pokedex, pokeId]);
   };
 
-
-  useEffect ((prevState)=>{
-    if (carrinho !== prevState.carrinho){
-      verifyItemOnCart()
-    }
-  },[])*/
 
   // mapeamento das imagens dos pokemons na tela principal
   const mapPokeImg = pokeUrl.map(e => {
@@ -71,7 +45,12 @@ const PaginaHome = () => {
       <CartaoPokemon key={indexPokemon}>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
         <div>
-          <button onClick={() => addPokedex(indexPokemon)}>Adicionar</button>
+        <button
+            onClick={() => addPokedex(indexPokemon)}
+            disabled={pokedex.includes(indexPokemon)}
+          >
+            Adicionar
+          </button>
           <button onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</button>
         </div>
       </CartaoPokemon>
