@@ -59,7 +59,7 @@ const PaginaHome = () => {
           alt="pokemons"
         />
         <ContainerBotao className="container-botao">
-          <Button className="pokedex" variant="contained" size="small" color="primary" onClick={() => addPokedex(indexPokemon)}><img src={pokeball} /></Button>
+          <Button className="pokedex" variant="contained" size="small" color="primary" onClick={() => addPokedex(indexPokemon)} disabled={pokedex.includes(indexPokemon)}><img src={pokeball}/></Button>
           <Button className="detalhes" variant="contained" size="small" color="secondary" onClick={() => goToDetails(history, indexPokemon)}><InfoOutlined /></Button>
         </ContainerBotao>
       </CartaoPokemon>
