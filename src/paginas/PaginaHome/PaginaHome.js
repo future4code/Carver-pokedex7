@@ -10,12 +10,12 @@ import MenuIcon from '@material-ui/icons/Menu'
 import pokeball from "../../assets/pokeball.png"
 
 
-
 const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
   const [pokedex, setPokedex] = useContext(GlobalContext)
+  const [disable, setDisable]=useState(false)
   const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
@@ -28,20 +28,9 @@ const PaginaHome = () => {
   }, [])
 
   const addPokedex = (pokeId) => {
-    let verificaExistencia;
-    for (let i = 0; i < pokedex.length; i++) {
-      if (pokedex[i] === pokeId) {
-        verificaExistencia = true;
-      }
-    }
-    if (verificaExistencia) { alert("Esse pokemon já está na pokedex.") }
-    else {
-      let novaPokedex = [...pokedex]
-      let pokeSelecionado = [...novaPokedex, pokeId]
-
-      setPokedex(pokeSelecionado)
-    }
-  }
+    alert ('Pokemon adicionado com sucesso!')
+    setPokedex([...pokedex, pokeId]);
+  };
 
 
   // mapeamento das imagens dos pokemons na tela principal
@@ -100,3 +89,5 @@ const PaginaHome = () => {
 }
 
 export default PaginaHome
+
+
