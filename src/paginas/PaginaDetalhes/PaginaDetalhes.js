@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchPokemon } from "../../request/request";
 import { goToPokedex, goToReturn } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
+import Loading from "../../componentes/Loading/Loading";
 import {
   Container,
   HeaderContainer,
@@ -33,7 +34,7 @@ const PaginaDetalhes = ({ match }) => {
   }, [match.params.id])
 
   if (loading) {
-    return <h1>Carregando...</h1>
+    return <Loading/>
   } else
 
     return (
