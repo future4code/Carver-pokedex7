@@ -34,7 +34,11 @@ const PaginaDetalhes = ({ match }) => {
   }, [match.params.id])
 
   if (loading) {
+
+    return <h1>Carregando....</h1>
+
     return <Loading/>
+
   } else
 
     return (
