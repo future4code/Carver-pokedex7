@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { goToHome } from '../../routes/coordinatis';
-import { Header, Container, Card } from './styled';
 import { goToDetails } from '../../routes/coordinatis';
 import { GlobalContext } from '../../contexts/GlobalContext/GlobalStateContext';
+import HeaderPokedex from './HeaderPokedex';
+import { CartaoPokemon, ContainerBotao, Container } from "./styled";
+import { Button } from "@material-ui/core";
+import { DeleteOutlined, InfoOutlined } from '@material-ui/icons'
+import Loading from '../../componentes/Loading/Loading';
 
 export function Pokedex() {
     const history = useHistory()
@@ -18,26 +21,23 @@ export function Pokedex() {
 
     const mapPokemons = pokedex.map((poke, index) => {
         return (
-            <Card key={index}>
+            <CartaoPokemon key={index}>
                 <p>
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke}.png`} />
                 </p>
-                <div>
-                    <button onClick={() => removerPokemon(poke)}>Remover</button>
-                    <button onClick={() => goToDetails(history, poke)}>Ver Detalhes</button>
-                </div>
-            </Card>
+                <ContainerBotao className="container-botao">
+                    <Button className="pokedex" variant="contained" size="small" color="primary" onClick={() => removerPokemon(poke)}><DeleteOutlined /></Button>
+                    <Button className="detalhes" variant="contained" size="small" color="secondary" onClick={() => goToDetails(history, poke)}><InfoOutlined /></Button>
+                </ContainerBotao>
+            </CartaoPokemon>
         )
     })
 
     return (
         <div>
-            <Header >
-                <button onClick={() => goToHome(history)}>Voltar para a lista de pokemons</button>
-                <h1>Pokedex</h1>
-            </Header >
+            <HeaderPokedex />
             <Container>
-                {mapPokemons}
+                {pokedex.length > 0 ? <>{mapPokemons} </> : <span>Você ainda não possui nehum pokemon adicionado a sua pokedex <>🙁</></span> }
             </Container>
         </div>
     )

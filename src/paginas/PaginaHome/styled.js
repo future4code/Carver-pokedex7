@@ -2,7 +2,6 @@ import { CardActions, Card, AppBar } from "@material-ui/core";
 import styled from "styled-components";
 
 export const ContainerBotao = styled(CardActions)`
-
 display: flex;
 justify-content: center;
 
@@ -21,30 +20,21 @@ justify-content: center;
 .pokedex:hover{
   background-color: #AAF683;
 }
-
 `
 
 export const ContainerHome = styled.div`
-
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: space-around;
-
 `
 
 export const CartaoPokemon = styled(Card)`
-
 margin: 15px;
 border: 1px #FF9B85 solid;
-
 `
 
 export const HeaderHome = styled(AppBar)`
-
-color: #EE6055;
-
-
 .botao-header{
   background-color: #FF9B85;
   color: white;
@@ -54,6 +44,4 @@ color: #EE6055;
 .botao-header:hover{
   background-color: #FF9B85;
 }
-
-
 `
