@@ -16,7 +16,6 @@ function Loading() {
             <PacmanLoader
                 color= {prymaryColor}
                 size={30}
-                // margin={2}
             />
         </Container>
     )
