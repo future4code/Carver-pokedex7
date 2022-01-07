@@ -23,16 +23,6 @@ Projeto Pokédex foi feito com o intuito de simular um site com as informações
 
 ### Surge 
 
-
-### O que funciona
-
-- Botões de navegação / troca de páginas;
-- Rederização de cards na Home Page;
-- Renderização do pokémon escolhido na Página Detalhes;
-- Ver detalhes e deletar o pokémon da Pokédex.
-
-### O que não funciona
-
 ### Integrantes
 
 - Bruna Nallis
