@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { goToDetails } from '../../routes/coordinatis';
 import { GlobalContext } from '../../contexts/GlobalContext/GlobalStateContext';
 import HeaderPokedex from './HeaderPokedex';
-import { CartaoPokemon, ContainerBotao, Container } from "./styled";
+import { CartaoPokemon, ContainerBotao, Container, ContainerVazio } from "./styled";
 import { Button } from "@material-ui/core";
 import { DeleteOutlined, InfoOutlined } from '@material-ui/icons'
 import Loading from '../../componentes/Loading/Loading';
@@ -36,9 +36,12 @@ export function Pokedex() {
     return (
         <div>
             <HeaderPokedex />
+            {pokedex.length > 0 ? <Container> {mapPokemons} </Container> : <ContainerVazio>Você ainda não possui nehum pokemon adicionado a sua Pokédex 🙁</ContainerVazio>}
+
+            {/* <HeaderPokedex />
             <Container>
                 {pokedex.length > 0 ? <>{mapPokemons} </> : <span>Você ainda não possui nehum pokemon adicionado a sua pokedex <>🙁</></span> }
-            </Container>
+            </Container> */}
         </div>
     )
 }

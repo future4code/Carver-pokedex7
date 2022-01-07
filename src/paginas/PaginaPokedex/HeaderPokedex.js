@@ -18,7 +18,7 @@ export default function HeaderPokedex() {
             Lista de pokemons
           </Button>
           <Typography variant="h5">
-            Pokedex
+            Pokédex
           </Typography>
         </Toolbar>
       </AppBar>
