@@ -53,3 +53,11 @@ span{
 }
 }
 `
+
+export const ContainerVazio = styled.div`
+display: flex;
+justify-content: space-around;
+font-size: 1.5em;
+margin-top: 40vh;
+
+`
