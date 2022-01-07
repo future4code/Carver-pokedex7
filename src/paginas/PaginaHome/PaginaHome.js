@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalStateContext";
-import { Header, CartaoPokemon, ContainerHome } from "./styled";
+import { HeaderHome, CartaoPokemon, ContainerBotao, ContainerHome } from "./styled";
 import { goToDetails, goToPokedex } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../../componentes/url/url";
+import { Button, CardMedia, Typography, AppBar, Toolbar, IconButton } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu'
+import pokeball from "../../assets/pokeball.png"
+
+
 
 const PaginaHome = () => {
 
@@ -38,6 +43,7 @@ const PaginaHome = () => {
     }
   }
 
+
   // mapeamento das imagens dos pokemons na tela principal
   const mapPokeImg = pokeUrl.map(e => {
     //mostrar a posição onde a string pokemon/ se encontra na url
@@ -49,33 +55,48 @@ const PaginaHome = () => {
     //junção das duas numa só variável
     const indexPokemon = e.substring(e.indexOf("pokemon/") + 8, e.length - 1)
 
+    // return (
+    //   <CartaoPokemon key={indexPokemon}>
+    //     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
+    //         <Button variant="contained" size="small" color="red" onClick={() => addPokedex(indexPokemon)}><img src={pokeball}/></Button>
+    //         <Button variant="contained" size="small" onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</Button>
+    //   </CartaoPokemon>
+    // )
     return (
-      <CartaoPokemon key={indexPokemon}>
-        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
-        <div>
-          <button onClick={() => addPokedex(indexPokemon)}>Adicionar</button>
-          <button onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</button>
-        </div>
+      <CartaoPokemon key={e}>
+        <CardMedia
+          component="img"
+          image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`}
+          alt="pokemons"
+        />
+        <ContainerBotao className="container-botao">
+          <Button className="pokedex" variant="contained" size="small" color="primary" onClick={() => addPokedex(indexPokemon)}><img src={pokeball} /></Button>
+          <Button className="detalhes" variant="contained" size="small" color="secondary" onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</Button>
+        </ContainerBotao>
       </CartaoPokemon>
     )
   })
 
   return (
-    <div>
-      <Header>
-        <button onClick={() => goToPokedex(history)}>
-          Ver minha POKEDEX
-        </button>
-        <p>
-          LISTA DE POKEMONS
-        </p>
-      </Header>
+    <>
+      <HeaderHome position="static" style={{ background: "#EE6055" }}>
+        <Toolbar>
+          <Button
+            className="botao-header"
+            variant="contained"
+            onClick={() => goToPokedex(history)}>
+            Pokédex
+          </Button>
+          <Typography variant="h6" className="">
+            Pokémons
+          </Typography>
+        </Toolbar>
+      </HeaderHome>
       <ContainerHome>
         {mapPokeImg}
       </ContainerHome>
-    </div>
+    </>
   )
 }
 
 export default PaginaHome
-
