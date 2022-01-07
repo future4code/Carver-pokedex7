@@ -9,3 +9,7 @@ export const goToDetails = (history, id) => {
 export const goToHome = (history) => {
     history.push("/")
 }
+
+export const goToReturn = (history) => {
+    history.goBack()
+}

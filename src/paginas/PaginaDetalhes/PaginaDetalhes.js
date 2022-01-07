@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchPokemon } from "../../request/request";
-import { goToPokedex, goToHome } from "../../routes/coordinatis";
+import { goToPokedex, goToReturn } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -11,7 +11,8 @@ import {
   FirstContainer,
   SecondContainer,
   ThirdContainer,
-  ImageContainer,
+  FrontImageContainer,
+  BackImageContainer,
   TypeContainer,
   MovesContainer,
   LeftStatusText,
@@ -19,9 +20,10 @@ import {
 
 const PaginaDetalhes = ({ match }) => {
 
+
   const [pokemon, setPokemon] = useState(undefined);
   const [loading, setLoading] = useState(true);
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     fetchPokemon(match.params.id).then((response) => {
@@ -37,28 +39,30 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton onClick={() => goToHome(history)}>
+          <HeaderButton primay onClick={() => goToReturn(history)}>
             Voltar
           </HeaderButton>
           <HeaderTitle>
+            <b>
             {pokemon.name.toUpperCase()}
+            </b>
           </HeaderTitle>
-          <HeaderButton onClick={() => goToPokedex(history)}>
-            Ir para Pokedex
+          <HeaderButton onClick={()=>goToPokedex(history)}>
+           Pokedex
           </HeaderButton>
         </HeaderContainer>
         <Content>
           <FirstContainer>
-            <ImageContainer>
-              <div>
-                <img alt="" src={pokemon.sprites.back_default} width="200" />
-              </div>
-            </ImageContainer>
-            <ImageContainer>
+          <FrontImageContainer>
               <div>
                 <img alt="" src={pokemon.sprites.front_default} width="200" />
               </div>
-            </ImageContainer>
+            </FrontImageContainer>
+            <BackImageContainer>
+              <div>
+                <img alt="" src={pokemon.sprites.back_default} width="200" />
+              </div>
+            </BackImageContainer>
           </FirstContainer>
 
           <SecondContainer>
@@ -90,6 +94,5 @@ const PaginaDetalhes = ({ match }) => {
         </Content>
       </Container>
     )
-}
-
+};
 export default PaginaDetalhes
