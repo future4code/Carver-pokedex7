@@ -1,7 +1,4 @@
 import axios from "axios";
-// import { BASE_URL } from "../components/url";
-
-// const BASE_URL = "https://pokeapi.co/api/v2/"
 import { BASE_URL } from "../componentes/url/url";
 
 // Listar 30 pokemons disponíveis

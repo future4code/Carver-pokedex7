@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchPokemon } from "../../request/request";
-import { goToPokedex, goToHome } from "../../routes/coordinatis";
+import { goToPokedex, goToReturn } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -37,7 +37,7 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <Container>
         <HeaderContainer>
-          <HeaderButton onClick={() => goToHome(history)}>
+          <HeaderButton onClick={() => goToReturn(history)}>
             Voltar
           </HeaderButton>
           <HeaderTitle>

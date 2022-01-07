@@ -1,37 +1,55 @@
 import styled from "styled-components";
+import { CardActions, Card, AppBar } from "@material-ui/core";
 
-export const Header = styled.header`
-border: 1px solid black;
+export const ContainerBotao = styled(CardActions)`
 display: flex;
-align-items: center;
-height: 8vh;
-button{
-    height: 4vh;
-    margin-left: 2vw;
+justify-content: center;
+
+.detalhes{
+  background-color: #EE6055;
 }
-h1{
-    margin-left: 25vw;
+
+.detalhes:hover{
+  background-color: #FF9B85;
+}
+
+.pokedex{
+  background-color: #60D394;
+}
+
+.pokedex:hover{
+  background-color: #AAF683;
 }
 `
 
+export const CartaoPokemon = styled(Card)`
+margin: 15px;
+border: 1px #FF9B85 solid;
+p{
+    text-align: center;
+}
+`
+
+export const HeaderHome = styled(AppBar)`
+color: #EE6055;
+
+.botao-header{
+  background-color: #FF9B85;
+  color: white;
+  margin-right: 35vw
+}
+
+.botao-header:hover{
+  background-color: #FF9B85;
+}
+`
 export const Container = styled.div`
 display: flex;
 flex-wrap: wrap;
-`
-
-export const Card = styled.div`
-border: 1px solid black;
-width: 15vw;
-height: 30vh;
-text-align: center;
-margin: 10px;
-p{
-    img{
-    width: 15vw;
-    height: 20vh;
+span{
+  font-size: 1.5em;
+ 
+ 
 }
-}
-button{
-    margin-right: 0.2vw;
 }
 `

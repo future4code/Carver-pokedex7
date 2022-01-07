@@ -5,17 +5,17 @@ import { HeaderHome, CartaoPokemon, ContainerBotao, ContainerHome } from "./styl
 import { goToDetails, goToPokedex } from "../../routes/coordinatis";
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../../componentes/url/url";
-import { Button, CardMedia, Typography, AppBar, Toolbar, IconButton } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu'
+import { Button, CardMedia, Typography, Toolbar } from "@material-ui/core";
 import pokeball from "../../assets/pokeball.png"
-
+import { InfoOutlined } from "@material-ui/icons";
+import Loading from "../../componentes/Loading/Loading";
 
 const PaginaHome = () => {
 
   const [pokemon, setPokemon] = useState([])
   const [pokeUrl, setPokeUrl] = useState([])
   const [pokedex, setPokedex] = useContext(GlobalContext)
-  const [disable, setDisable]=useState(false)
+  const [disable, setDisable] = useState(false)
   const history = useHistory()
 
   // pegar os pokemons na api e setar o nome e a url nos estados
@@ -28,7 +28,7 @@ const PaginaHome = () => {
   }, [])
 
   const addPokedex = (pokeId) => {
-    alert ('Pokemon adicionado com sucesso!')
+    alert('Pokemon adicionado com sucesso!')
     setPokedex([...pokedex, pokeId]);
   };
 
@@ -60,7 +60,7 @@ const PaginaHome = () => {
         />
         <ContainerBotao className="container-botao">
           <Button className="pokedex" variant="contained" size="small" color="primary" onClick={() => addPokedex(indexPokemon)}><img src={pokeball} /></Button>
-          <Button className="detalhes" variant="contained" size="small" color="secondary" onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</Button>
+          <Button className="detalhes" variant="contained" size="small" color="secondary" onClick={() => goToDetails(history, indexPokemon)}><InfoOutlined /></Button>
         </ContainerBotao>
       </CartaoPokemon>
     )
@@ -76,13 +76,14 @@ const PaginaHome = () => {
             onClick={() => goToPokedex(history)}>
             Pokédex
           </Button>
-          <Typography variant="h6" className="">
+          <Typography variant="h5" className="">
             Pokémons
           </Typography>
         </Toolbar>
       </HeaderHome>
       <ContainerHome>
-        {mapPokeImg}
+      {pokeUrl.length > 0 ? <>{mapPokeImg}</> : <Loading/>}
+        
       </ContainerHome>
     </>
   )
