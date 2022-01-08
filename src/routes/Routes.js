@@ -4,6 +4,7 @@ import { NotFound } from "../paginas/NotFoundPage/NotFound"
 import { Pokedex } from '../paginas/PaginaPokedex/PaginaPokedex'
 import PaginaDetalhes from '../paginas/PaginaDetalhes/PaginaDetalhes'
 
+
 export const Router = () => {
     return (
         <BrowserRouter>
