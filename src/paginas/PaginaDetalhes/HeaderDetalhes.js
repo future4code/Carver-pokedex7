@@ -4,7 +4,7 @@ import { goToHome, goToPokedex } from '../../routes/coordinatis';
 import { useHistory } from 'react-router-dom';
 import { HeaderPaginaDetalhes } from './styled';
 
-export default function HeaderDetalhes() {
+export default function HeaderDetalhes(props) {
   const history = useHistory()
 
   return (
@@ -17,7 +17,7 @@ export default function HeaderDetalhes() {
             Voltar
           </Button>
           <Typography variant="h5">
-            Detalhes
+            {props.pokemon.name.toUpperCase()}
           </Typography>
           <Button
             variant="contained"

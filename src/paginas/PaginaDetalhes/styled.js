@@ -1,117 +1,83 @@
 import styled from "styled-components"
+import { AppBar, Card } from "@material-ui/core"
 
-export const Container = styled.div`
-    display: flex;
-    flex: 1;
-    height: 100vh;
-    flex-direction: column;
+export const HeaderPaginaDetalhes = styled(AppBar)`
+
+.display-botoes{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.botao-header{
+  background-color: #FF9B85;
+  color: white;
+}
 `
 
-export const HeaderContainer = styled.header`
-    display: flex;
-    border: 2px solid;
-    background-color:  #EE6055;
-    max-width: 100vw;
-    flex: 1;
-    align-items: center;
-    justify-content: space-around;
-    margin: 5px;
-    border-color: #EE6055;
+export const HeaderContainer = styled(AppBar)`
+
+.toolbar{
+    justify-content: space-between;
+}
+
+.botao-header-detalhes{
+  background-color: #FF9B85;
+  color: white;
+}
+
+.botao-header-detalhes:hover{
+  background-color: #FF9B85;
+}
 `
 
-export const HeaderButton = styled.button`
-    padding: 10px;
-    background: ${props => props.primary ? "white":"#FF9B85"};
-    color: ${props => props.primary ? "#FF9B85": "white"};
-    border-color:#FF9B85;
-    border-radius:5px;
-`
-
-export const PokedexButton= styled.button`
-    padding: :10px;
-
-`
-
-export const HeaderTitle = styled.p`
-`
-
-export const LeftStatusText = styled.p`
-align-self: flex-start;
-margin-left: 20px;
-`
-
-export const Content = styled.div`
-display: flex;
-flex:10;
-align-content: space-around;
-justify-content: space-evenly;
-`
-
-export const FirstContainer = styled.div`
-display: flex;
-flex:0.5;
-flex-direction: column;
-align-items: center;
-justify-content: space-around;
-margin: 20px;
-border-color: #FF9B85;
-`
-export const FrontImageContainer = styled.div`
-display: flex;
-border: 2px solid;
-border-color: #FF9B85;
-margin: 30px;
-align-items: center;
-flex:1;
-border-radius:10px;
-`
-export const BackImageContainer = styled.div`
-display: flex;
-border: 2px solid;
-border-color: #FF9B85;
-align-items: center;
-flex:1;
-border-radius:10px;
-`
-
-export const SecondContainer = styled.div`
-border: 2px solid;
-display: flex;
-flex: 0.5;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin: 20px;
-border-color: #FF9B85;
-font-size:30px;
-border-radius:10px;
-`
-
-export const ThirdContainer = styled.div`
+export const ContainerHome = styled.div`
 display: flex;
 flex-direction: column;
-flex: 1;
+align-content: flex-start;
+
 `
 
-export const TypeContainer = styled.div`
-border: 2px solid;
+export const ContainerDetalhes = styled.div`
 display: flex;
-flex: 0.5;
-margin: 20px;
-justify-content: space-around;
-border-color: #FF9B85;
-font-size:25px;
-border-radius:10px;
-`
-export const MovesContainer = styled.div`
-border:2px solid;
-margin: 20px;
-display: flex;
-flex: 5;
-flex-direction: column;
+flex-direction: row;
 justify-content: center;
 align-items: center;
-border-color: #FF9B85;
-font-size:30px;
-border-radius:10px;
+
+`
+
+export const CartaoPokemonDetalhes = styled(Card)`
+margin: 15px;
+border: 1px #FF9B85 solid;
+
+img{
+    height: 200px;
+    width: 200px;
+}
+`
+
+export const CartaoPokemonStatus = styled(Card)`
+margin: 15px;
+border: 1px #FF9B85 solid;
+height: 300px;
+width: 200px;
+
+
+p{
+  padding: 3px
+}
+h6{
+  text-align: center;
+}
+`
+export const CartaoPokemonTipo = styled(Card)`
+margin: 15px;
+border: 1px #FF9B85 solid;
+height: 10vh;
+width: 150px;
+padding: 3px;
+
+h6{
+  text-align: center;
+}
 `
