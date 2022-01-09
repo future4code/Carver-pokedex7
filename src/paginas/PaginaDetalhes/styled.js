@@ -38,17 +38,14 @@ align-content: flex-start;
 
 `
 
-export const ContainerDetalhes = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-
-`
-
 export const CartaoPokemonDetalhes = styled(Card)`
 margin: 15px;
 border: 1px #FF9B85 solid;
+
+.menu{
+  justify-content: center;
+
+}
 
 img{
     height: 200px;
@@ -74,10 +71,11 @@ export const CartaoPokemonTipo = styled(Card)`
 margin: 15px;
 border: 1px #FF9B85 solid;
 height: 10vh;
-width: 150px;
+width: 193px;
 padding: 3px;
 
 h6{
   text-align: center;
 }
 `
+
