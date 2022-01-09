@@ -28,7 +28,7 @@ const PaginaHome = () => {
   }, [])
 
   const addPokedex = (pokeId) => {
-    alert('Pokemon adicionado com sucesso!')
+    alert('Pokémon adicionado com sucesso!')
     setPokedex([...pokedex, pokeId]);
   };
 
@@ -44,13 +44,6 @@ const PaginaHome = () => {
     //junção das duas numa só variável
     const indexPokemon = e.substring(e.indexOf("pokemon/") + 8, e.length - 1)
 
-    // return (
-    //   <CartaoPokemon key={indexPokemon}>
-    //     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indexPokemon}.png`} />
-    //         <Button variant="contained" size="small" color="red" onClick={() => addPokedex(indexPokemon)}><img src={pokeball}/></Button>
-    //         <Button variant="contained" size="small" onClick={() => goToDetails(history, indexPokemon)}>ver detalhes</Button>
-    //   </CartaoPokemon>
-    // )
     return (
       <CartaoPokemon key={e}>
         <CardMedia
@@ -83,7 +76,6 @@ const PaginaHome = () => {
       </HeaderHome>
       <ContainerHome>
       {pokeUrl.length > 0 ? <>{mapPokeImg}</> : <Loading/>}
-        
       </ContainerHome>
     </>
   )

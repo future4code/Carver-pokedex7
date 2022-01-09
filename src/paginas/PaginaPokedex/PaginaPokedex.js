@@ -36,12 +36,7 @@ export function Pokedex() {
     return (
         <div>
             <HeaderPokedex />
-            {pokedex.length > 0 ? <Container> {mapPokemons} </Container> : <ContainerVazio>Você ainda não possui nehum pokemon adicionado a sua Pokédex 🙁</ContainerVazio>}
-
-            {/* <HeaderPokedex />
-            <Container>
-                {pokedex.length > 0 ? <>{mapPokemons} </> : <span>Você ainda não possui nehum pokemon adicionado a sua pokedex <>🙁</></span> }
-            </Container> */}
+            {pokedex.length > 0 ? <Container> {mapPokemons} </Container> : <ContainerVazio>Você ainda não possui nehum Pokémon adicionado a sua Pokédex 🙁</ContainerVazio>}
         </div>
     )
 }
