@@ -64,7 +64,7 @@ const PaginaDetalhes = ({ match }) => {
     return (
       <>
         <HeaderDetalhes pokemon={pokemon} />
-        <ContainerHome className="teste">
+        <ContainerHome>
           <CartaoPokemonDetalhes>
             <CardMedia
               component="img"
@@ -119,8 +119,8 @@ const PaginaDetalhes = ({ match }) => {
             <CardContent>
               <Typography>
                 {pokemon.moves.map((move, index) => {
-                  if (index === 0) return <p key={move.move.name}>{move.move.name}</p>
-                  return <p key={move.move.name}>{move.move.name}</p>
+                  if (index === 0) return <div key={move.move.name}>{move.move.name}</div>
+                  return <div key={move.move.name}>{move.move.name}</div>
                 })}
               </Typography>
             </CardContent>

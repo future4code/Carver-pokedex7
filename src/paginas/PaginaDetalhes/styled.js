@@ -13,6 +13,10 @@ export const HeaderPaginaDetalhes = styled(AppBar)`
   background-color: #FF9B85;
   color: white;
 }
+
+.botao-header:hover{
+  background-color: #FF9B85;
+}
 `
 
 export const HeaderContainer = styled(AppBar)`
@@ -29,6 +33,7 @@ export const HeaderContainer = styled(AppBar)`
 .botao-header-detalhes:hover{
   background-color: #FF9B85;
 }
+
 `
 
 export const ContainerHome = styled.div`
@@ -63,9 +68,11 @@ width: 200px;
 p{
   padding: 3px
 }
+
 h6{
   text-align: center;
 }
+
 `
 export const CartaoPokemonTipo = styled(Card)`
 margin: 15px;
