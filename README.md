@@ -23,6 +23,8 @@ Projeto Pokédex foi feito com o intuito de simular um site com as informações
 
 ### Surge 
 
+http://tense-owner.surge.sh/
+
 ### Integrantes
 
 - Bruna Nallis
