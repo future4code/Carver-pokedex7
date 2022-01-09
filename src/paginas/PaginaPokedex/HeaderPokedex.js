@@ -15,7 +15,7 @@ export default function HeaderPokedex() {
             variant="contained"
             color="neutral"
             onClick={() => goToHome(history)}>
-            Lista de pokemons
+            Lista de Pokémons
           </Button>
           <Typography variant="h5">
             Pokédex
