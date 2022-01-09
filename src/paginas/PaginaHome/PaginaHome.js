@@ -28,7 +28,7 @@ const PaginaHome = () => {
   }, [])
 
   const addPokedex = (pokeId) => {
-    alert('Pokemon adicionado com sucesso!')
+    alert('Pokémon adicionado com sucesso!')
     setPokedex([...pokedex, pokeId]);
   };
 
